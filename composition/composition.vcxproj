@@ -73,6 +73,7 @@
   <ItemGroup>
     <ClInclude Include="block.h" />
     <ClInclude Include="box.h" />
+    <ClInclude Include="IBounded.h" />
     <ClInclude Include="particle.h" />
     <ClInclude Include="vec3.h" />
   </ItemGroup>

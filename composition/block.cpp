@@ -1,7 +1,6 @@
 #include "block.h"
 
 Block::Block()
-    : pos_x(0.0), pos_y(0.0), pos_z(0.0), scale(0.0)
 {
 }
 
@@ -19,4 +18,14 @@ Block::Node::~Node()
     {
         delete nodes[i];
     }
+}
+
+void Block::set(const Box &box, const bool &inclusive)
+{
+	root.set(box, inclusive);
+}
+
+void Block::clear()
+{
+	root = Node();
 }
