@@ -3,13 +3,15 @@
 
 class IBounded;
 
-#include "box.h
+#include "box.h"
+
+#include <vector>
 
 class IBounded
 {
 public:
-	const Box &getWholeBoundingBox();
-	const std::vector<Box> &getAllBoundingBoxes();
+	const virtual Box &getWholeBoundBox() = 0;
+	const virtual std::vector<Box> &getAllBoundBoxes() = 0;
 };
 
 #endif

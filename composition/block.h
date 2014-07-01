@@ -5,8 +5,7 @@ class Block;
 
 #include "particle.h"
 #include "box.h"
-
-#include <vector>
+#include "CacheBounded.h"
 
 #define BLOCK_MAX_DIVISION_DEPTH 6
 
@@ -14,7 +13,7 @@ class Block;
  * @brief The Block class represents a large collection of particles
  * encapsulated in octree.
  */
-class Block
+class Block : public CacheBounded
 {
 private:
     /**
@@ -33,8 +32,6 @@ private:
     };
 
     Node root;
-	Box wholeBoundBox;
-	std::vector<Box> boundingBoxes;
 
 	void set(const Box &box, const bool &inclusive);
 	void clear();

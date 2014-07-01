@@ -10,6 +10,22 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="CacheBounded.h" />
+    <ClInclude Include="IBounded.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="Vec3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="CacheBounded.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="Vec3.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{31905D52-B46C-4070-8340-E3A5608A3747}</ProjectGuid>
     <RootNamespace>composition</RootNamespace>
@@ -63,20 +79,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="block.cpp" />
-    <ClCompile Include="box.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="particle.cpp" />
-    <ClCompile Include="vec3.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="block.h" />
-    <ClInclude Include="box.h" />
-    <ClInclude Include="IBounded.h" />
-    <ClInclude Include="particle.h" />
-    <ClInclude Include="vec3.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
