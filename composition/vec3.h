@@ -12,7 +12,7 @@ public:
     Vec3(const Vec3 &orig);
     Vec3(const double &x, const double &y, const double &z);
 
-    double x, y, z;
+    double m_X, m_Y, m_Z;
 };
 
 std::ostream &operator << (std::ostream &os, const Vec3 &vec3);

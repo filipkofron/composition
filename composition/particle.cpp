@@ -1,6 +1,6 @@
 #include "particle.h"
 
 Particle::Particle()
-    : id(DEFAULT_PARTICLE)
+    : m_Id(DEFAULT_PARTICLE)
 {
 }

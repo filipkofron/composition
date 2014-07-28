@@ -23,8 +23,8 @@ public:
 
     double volume() const;
 
-    Vec3 a;
-    Vec3 b;
+    Vec3 m_A;
+    Vec3 m_B;
 };
 
 std::ostream &operator << (std::ostream &os, const Box &box);

@@ -8,13 +8,13 @@ Box::Box()
 }
 
 Box::Box(const Box &box)
-    : a(box.a), b(box.b)
+    : m_A(box.m_A), m_B(box.m_B)
 {
 
 }
 
 Box::Box(const Vec3 &a, const Vec3 &b)
-    : a(a), b(b)
+    : m_A(a), m_B(b)
 {
     sort();
 }
@@ -22,70 +22,70 @@ Box::Box(const Vec3 &a, const Vec3 &b)
 void Box::sort()
 {
     double t;
-    if(a.x > b.x)
+    if(m_A.m_X > m_B.m_X)
     {
-        t = b.x;
-        b.x = a.x;
-        a.x = t;
+        t = m_B.m_X;
+        m_B.m_X = m_A.m_X;
+        m_A.m_X = t;
     }
-    if(a.y > b.y)
+    if(m_A.m_Y > m_B.m_Y)
     {
-        t = b.y;
-        b.y = a.y;
-        a.y = t;
+        t = m_B.m_Y;
+        m_B.m_Y = m_A.m_Y;
+        m_A.m_Y = t;
     }
-    if(a.z > b.z)
+    if(m_A.m_Z > m_B.m_Z)
     {
-        t = b.z;
-        b.z = a.z;
-        a.z = t;
+        t = m_B.m_Z;
+        m_B.m_Z = m_A.m_Z;
+        m_A.m_Z = t;
     }
 }
 
 bool Box::contains(const Vec3 &vec) const
 {
-    return vec.x >= a.x && vec.x <= b.x
-        && vec.y >= a.y && vec.y <= b.y
-        && vec.z >= a.z && vec.z <= b.z;
+    return vec.m_X >= m_A.m_X && vec.m_X <= m_B.m_X
+        && vec.m_Y >= m_A.m_Y && vec.m_Y <= m_B.m_Y
+        && vec.m_Z >= m_A.m_Z && vec.m_Z <= m_B.m_Z;
 }
 
 bool Box::contains(const Box &box) const
 {
-    return box.a.x >= a.x && box.b.x <= b.x
-        && box.a.y >= a.y && box.b.y <= b.y
-        && box.a.z >= a.z && box.b.z <= b.z;
+    return box.m_A.m_X >= m_A.m_X && box.m_B.m_X <= m_B.m_X
+        && box.m_A.m_Y >= m_A.m_Y && box.m_B.m_Y <= m_B.m_Y
+        && box.m_A.m_Z >= m_A.m_Z && box.m_B.m_Z <= m_B.m_Z;
 }
 
 Box Box::intersect(const Box &box) const
 {
     Box nbox;
 
-    nbox.a.x = MAX(a.x, box.a.x);
-    nbox.b.x = MIN(b.x, box.b.x);
+    nbox.m_A.m_X = MAX(m_A.m_X, box.m_A.m_X);
+    nbox.m_B.m_X = MIN(m_B.m_X, box.m_B.m_X);
 
-    nbox.a.y = MAX(a.y, box.a.y);
-    nbox.b.y = MIN(b.y, box.b.y);
+    nbox.m_A.m_Y = MAX(m_A.m_Y, box.m_A.m_Y);
+    nbox.m_B.m_Y = MIN(m_B.m_Y, box.m_B.m_Y);
 
-    nbox.a.z = MAX(a.z, box.a.z);
-    nbox.b.z = MIN(b.z, box.b.z);
+    nbox.m_A.m_Z = MAX(m_A.m_Z, box.m_A.m_Z);
+    nbox.m_B.m_Z = MIN(m_B.m_Z, box.m_B.m_Z);
 
     return nbox;
 }
 
 bool Box::intersects(const Box &box) const
 {
-    return ((box.a.x >= a.x && box.a.x <= b.x) || (box.b.x >= a.x && box.b.x <= b.x))
-        && ((box.a.y >= a.y && box.a.y <= b.y) || (box.b.y >= a.y && box.b.y <= b.y))
-        && ((box.a.z >= a.z && box.a.z <= b.z) || (box.b.x >= a.z && box.b.z <= b.z));
+    return ((box.m_A.m_X >= m_A.m_X && box.m_A.m_X <= m_B.m_X) || (box.m_B.m_X >= m_A.m_X && box.m_B.m_X <= m_B.m_X))
+        && ((box.m_A.m_Y >= m_A.m_Y && box.m_A.m_Y <= m_B.m_Y) || (box.m_B.m_Y >= m_A.m_Y && box.m_B.m_Y <= m_B.m_Y))
+        && ((box.m_A.m_Z >= m_A.m_Z && box.m_A.m_Z <= m_B.m_Z) || (box.m_B.m_Z >= m_A.m_Z && box.m_B.m_Z <= m_B.m_Z));
 }
 
 double Box::volume() const
 {
-    return (b.x - a.x) * (b.y - a.y) * (b.z - a.z);
+    return (m_B.m_X - m_A.m_X) * (m_B.m_Y - m_A.m_Y) * (m_B.m_Z - m_A.m_Z);
 }
 
 std::ostream &operator << (std::ostream &os, const Box &box)
 {
-    os << "[" << box.a << ", " << box.b << "]";
+    os << "[" << box.m_A << ", " << box.m_B << "]";
     return os;
 }

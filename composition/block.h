@@ -24,17 +24,21 @@ private:
         Node();
         ~Node();
 
-        Node *nodes[8];
-        Particle particle;
-        bool full;
+        Node *m_Nodes[8];
+        Particle m_Particle;
+        bool m_Full;
 
-		void set(const Box &box, const bool &inclusive);
+        void set(const Box &box, const bool &inclusive, const Particle &particle);
+        void clear();
     };
 
-    Node root;
+    Node m_Root;
 
-	void set(const Box &box, const bool &inclusive);
+    void set(const Box &box, const bool &inclusive, const Particle &particle);
 	void clear();
+protected:
+    virtual void onUpdateWholeBoundBox(Box &box);
+    virtual void onUpdateAllBoundBox(std::vector<Box> &boxes);
 public:
     Block();
 };

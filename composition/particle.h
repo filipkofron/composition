@@ -12,7 +12,7 @@ class Particle
 public:
     Particle();
 
-    uint16_t id;
+    uint16_t m_Id;
     
 };
 
