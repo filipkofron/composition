@@ -18,6 +18,7 @@ public:
 
     bool contains(const Vec3 &vec) const;
     bool contains(const Box &box) const;
+    bool touches(const Box &box) const;
     Box intersect(const Box &box) const;
     bool intersects(const Box &box) const;
 

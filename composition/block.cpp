@@ -26,11 +26,13 @@ void Block::Node::set(const Box &box, const bool &inclusive, const Particle &par
 {
     if(box.contains(nodeBox))
     {
+        clear();
         m_Full = true;
         m_Particle = particle;
+        return;
     }
-    else
-    {
+
+    if() {
         m_Full = false;
         m_Particle = Particle();
 

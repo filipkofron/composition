@@ -3,6 +3,8 @@
 #define MIN(x, y) (x < y ? x : y)
 #define MAX(x, y) (x > y ? x : y)
 
+#define PRECISION_UNIT 1e-10
+
 Box::Box()
 {
 }
@@ -54,6 +56,11 @@ bool Box::contains(const Box &box) const
     return box.m_A.m_X >= m_A.m_X && box.m_B.m_X <= m_B.m_X
         && box.m_A.m_Y >= m_A.m_Y && box.m_B.m_Y <= m_B.m_Y
         && box.m_A.m_Z >= m_A.m_Z && box.m_B.m_Z <= m_B.m_Z;
+}
+
+bool Box::touches(const Box &box) const
+{
+    return intersect(box).volume() > PRECISION_UNIT;
 }
 
 Box Box::intersect(const Box &box) const
